@@ -3,8 +3,8 @@ locals {
     {
       "Name"    = "${var.teamid}-${var.prjid}",
       "team"    = var.teamid,
-      "project" = var.prjid
+      "project" = var.prjid,
+      "Owner"   = lookup(data.external.current_user.result, "name")
     }
   )
 }
-
