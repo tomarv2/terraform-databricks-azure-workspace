@@ -1,9 +1,6 @@
 terraform {
   required_version = ">= 1.0.1"
   required_providers {
-    azure = {
-      version = "~> 2.33"
-    }
     azurerm = {
       version = "~> 2.94"
     }
