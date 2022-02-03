@@ -1,5 +1,5 @@
 module "vnet" {
-  source = "git@github.com:tomarv2/terraform-azure-vnet.git?ref=v0.0.1"
+  source = "git@github.com:tomarv2/terraform-azure-virtual-network.git?ref=v0.0.2"
 
   resource_group_name = "demo-resource_group"
   location            = "westus2"
@@ -11,11 +11,12 @@ module "vnet" {
 }
 
 module "azure_databricks" {
-  source                = "../../"
+  source = "../../"
+
   deploy_resource_group = false
   resource_group_name   = "demo-resource_group"
   custom_parameters = {
-    virtual_network_id = module.vnet.vnet_id
+    virtual_network_id = module.vnet.virtual_network_id
   }
   # ---------------------------------------------
   # Note: Do not change teamid and prjid once set.

@@ -24,10 +24,17 @@ repos:
       - id: end-of-file-fixer
       - id: check-yaml
 
+#  - repo: https://github.com/bridgecrewio/checkov.git
+#    rev: '2.0.769'
+#    hooks:
+#    - id: checkov
+#      verbose: true
+#      args:
+#      - -d . --framework terraform -o output_format json --download-external-modules True
+
   - repo: https://github.com/bridgecrewio/checkov.git
     rev: '2.0.769'
     hooks:
     - id: checkov
       verbose: true
-      args:
-      - -d . --framework terraform -o output_format json
+      args: [-d, '.', --framework, 'terraform', --download-external-modules, 'True']

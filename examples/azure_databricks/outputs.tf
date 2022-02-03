@@ -19,5 +19,6 @@ output "databricks_managed_resource_group_name" {
 }
 
 output "databricks_sku" {
-  value = module.azure_databricks.databricks_sku
+  description = "The sku to use for the Databricks Workspace. Possible values are standard, premium, or trial. Changing this can force a new resource to be created in some circumstances"
+  value       = module.azure_databricks.databricks_sku
 }

@@ -19,5 +19,6 @@ output "databricks_workspace_id" {
 }
 
 output "databricks_sku" {
-  value = azurerm_databricks_workspace.this.sku
+  description = "The sku to use for the Databricks Workspace. Possible values are standard, premium, or trial. Changing this can force a new resource to be created in some circumstances"
+  value       = azurerm_databricks_workspace.this.sku
 }

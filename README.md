@@ -16,20 +16,10 @@
 </p>
 
 ## Terraform module for [Databricks Azure Workspace (Part 1)](https://registry.terraform.io/providers/databrickslabs/databricks/latest/docs/guides/azure-workspace)
-
-> ❗️ **Important**
->
-> :point_right: This Terraform module assumes you have access to: [https://accounts.cloud.databricks.com](https://accounts.cloud.databricks.com)
->
-> :point_right: Databricks account username: `databricks_account_username`
->
-> :point_right: Databricks account password: `databricks_account_password`
->
-> :point_right: Databricks account id, `databricks_account_id` can be found on the top right corner of the page, once you're logged in.
->
-> :point_right: Part 2: Terraform module for [Databricks Workspace management](https://github.com/tomarv2/terraform-databricks-workspace-management)
-
 ---
+
+## Terraform module for [Databricks AWS Workspace](https://github.com/tomarv2/terraform-databricks-aws-workspace)
+
 ![Databricks deployment](https://github.com/tomarv2/terraform-databricks-azure-workspace/raw/main/docs/images/databricks_deployment.png)
 ---
 
@@ -76,7 +66,7 @@ export TF_AZURE_CONTAINER=tfstate # Output of remote_state.sh
 export ARM_ACCESS_KEY=xxxxxxxxxx # Output of remote_state.sh
 ```
 
-- Update [main.tf](examples/azure_databricks_new_vnet/main.tf) file with required values.
+- Update [main.tf](examples/azure_databricks_with_virtual_network/main.tf) file with required values.
 
 - Run and verify the output before deploying:
 ```
