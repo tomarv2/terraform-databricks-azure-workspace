@@ -9,23 +9,9 @@ variable "prjid" {
 }
 
 variable "region" {
-  description = "default Azure region"
+  description = " The region where the resources are created"
   type        = string
-  default     = "westeurope"
-}
-
-variable "databricks_account_username" {
-  description = "databricks account username"
-  type        = string
-}
-variable "databricks_account_password" {
-  description = "databricks account password"
-  type        = string
-}
-
-variable "databricks_account_id" {
-  description = "External ID provided by third party."
-  type        = string
+  default     = "westus2"
 }
 
 resource "random_string" "naming" {
@@ -35,7 +21,7 @@ resource "random_string" "naming" {
 }
 
 locals {
-  suffix = random_string.naming.result
+  prefix = random_string.naming.result
 }
 
 variable "resource_group_name" {
@@ -45,35 +31,14 @@ variable "resource_group_name" {
 }
 
 variable "workspace_name" {
-  description = "Databricks workspace name"
+  description = "Specifies the name of the Databricks Workspace resource. Changing this forces a new resource to be created"
   default     = null
   type        = string
 }
 
 variable "sku" {
-  description = "Databricks sku"
-  default     = "premium"
-  type        = string
-}
-
-
-variable "subscription_id" {
-  description = "Azure subscription Id"
-  type        = string
-}
-
-variable "client_id" {
-  description = "Azure client Id"
-  type        = string
-}
-
-variable "client_secret" {
-  description = "Azure client secret"
-  type        = string
-}
-
-variable "tenant_id" {
-  description = "Azure tenant Id"
+  description = "The sku to use for the Databricks Workspace. Possible values are standard, premium, or trial. Changing this can force a new resource to be created in some circumstances"
+  default     = "standard"
   type        = string
 }
 
@@ -89,12 +54,44 @@ variable "deploy_resource_group" {
   default     = false
 }
 
-resource "random_string" "naming" {
-  special = false
-  upper   = false
-  length  = 3
+variable "infrastructure_encryption_enabled" {
+  description = "Is the Databricks File System root file system enabled with a secondary layer of encryption with platform managed keys? Possible values are true or false. Defaults to false. This field is only valid if the Databricks Workspace sku is set to premium. Changing this forces a new resource to be created"
+  default     = false
+  type        = bool
 }
 
-locals {
-  prefix = random_string.naming.result
+variable "public_network_access_enabled" {
+  description = "Allow public access for accessing workspace. Set value to false to access workspace only via private link endpoint. Possible values include true or false. Defaults to true. Changing this forces a new resource to be created"
+  default     = false
+  type        = bool
+}
+
+variable "custom_parameters" {
+  description = "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/databricks_workspace"
+  type        = any
+  default     = null
+}
+
+variable "customer_managed_key_enabled" {
+  description = "Is the workspace enabled for customer managed key encryption? If true this enables the Managed Identity for the managed storage account. Possible values are true or false. Defaults to false. This field is only valid if the Databricks Workspace sku is set to premium. Changing this forces a new resource to be created"
+  default     = false
+  type        = bool
+}
+
+variable "load_balancer_backend_address_pool_id" {
+  description = "Resource ID of the Outbound Load balancer Backend Address Pool for Secure Cluster Connectivity (No Public IP) workspace. Changing this forces a new resource to be created"
+  default     = null
+  type        = string
+}
+
+variable "managed_services_cmk_key_vault_key_id" {
+  description = "Customer managed encryption properties for the Databricks Workspace managed resources(e.g. Notebooks and Artifacts). Changing this forces a new resource to be created."
+  default     = null
+  type        = string
+}
+
+variable "network_security_group_rules_required" {
+  description = "Does the data plane (clusters) to control plane communication happen over private link endpoint only or publicly? Possible values AllRules, NoAzureDatabricksRules or NoAzureServiceRules. Required when public_network_access_enabled is set to false. Changing this forces a new resource to be created"
+  default     = null
+  type        = string
 }

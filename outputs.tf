@@ -17,3 +17,7 @@ output "databricks_workspace_id" {
   description = "databricks workspace id"
   value       = azurerm_databricks_workspace.this.workspace_id
 }
+
+output "databricks_sku" {
+  value = azurerm_databricks_workspace.this.sku
+}

@@ -76,7 +76,7 @@ export TF_AZURE_CONTAINER=tfstate # Output of remote_state.sh
 export ARM_ACCESS_KEY=xxxxxxxxxx # Output of remote_state.sh
 ```
 
-- Update [main.tf](examples/sample/main.tf) file with required values.
+- Update [main.tf](examples/azure_databricks_new_vnet/main.tf) file with required values.
 
 - Run and verify the output before deploying:
 ```
