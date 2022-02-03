@@ -107,7 +107,7 @@ module "databricks_workspace" {
   subscription_id = var.subscription_id
   tenant_id       = var.tenant_id
 
-  rg_name         = "demo-rg"
+  resource_group_name         = "demo-rg"
   # ---------------------------------------------
   # Note: Do not change teamid and prjid once set.
   teamid = var.teamid

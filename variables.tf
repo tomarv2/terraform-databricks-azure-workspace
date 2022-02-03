@@ -38,7 +38,7 @@ locals {
   suffix = random_string.naming.result
 }
 
-variable "rg_name" {
+variable "resource_group_name" {
   description = "Resource Group name"
   default     = null
   type        = string
@@ -83,8 +83,18 @@ variable "custom_tags" {
   default     = null
 }
 
-variable "deploy_rg" {
-  description = "deploy resource group"
+variable "deploy_resource_group" {
+  description = "feature flag to deploy this resource or not"
   type        = bool
   default     = false
+}
+
+resource "random_string" "naming" {
+  special = false
+  upper   = false
+  length  = 3
+}
+
+locals {
+  prefix = random_string.naming.result
 }

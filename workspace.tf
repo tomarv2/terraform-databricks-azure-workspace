@@ -4,5 +4,5 @@ resource "azurerm_databricks_workspace" "this" {
   location                    = azurerm_resource_group.this.location
   sku                         = var.sku
   managed_resource_group_name = "${local.prefix}-workspace-rg"
-  tags                        = local.tags
+  tags                        = local.shared_tags
 }
