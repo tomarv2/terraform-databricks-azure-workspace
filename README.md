@@ -17,7 +17,7 @@
 
 ## Terraform module for [Databricks Azure Workspace (Part 1)](https://registry.terraform.io/providers/databrickslabs/databricks/latest/docs/guides/azure-workspace)
 
-> :arrow_right:️ **Note** Part 2: Terraform module for [Databricks Workspace management](https://github.com/tomarv2/terraform-databricks-workspace-management)
+> :arrow_right:️ **Part 2:** Terraform module for [Databricks Workspace management](https://github.com/tomarv2/terraform-databricks-workspace-management)
 
 ---
 
