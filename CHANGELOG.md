@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [v0.0.4](https://github.com/tomarv2/terraform-databricks-azure-workspace/releases/tag/v0.0.4) - 2022-02-04 16:55:43
+
+*No description*
+
 ## [v0.0.3](https://github.com/tomarv2/terraform-databricks-azure-workspace/releases/tag/v0.0.3) - 2022-02-04 16:28:40
 
 *No description*
