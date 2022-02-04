@@ -16,9 +16,12 @@
 </p>
 
 ## Terraform module for [Databricks Azure Workspace (Part 1)](https://registry.terraform.io/providers/databrickslabs/databricks/latest/docs/guides/azure-workspace)
----
 
-## Terraform module for [Databricks AWS Workspace](https://github.com/tomarv2/terraform-databricks-aws-workspace)
+> :arrow_right:️ **Note**
+>
+> :point_right: Part 2: Terraform module for [Databricks Workspace management](https://github.com/tomarv2/terraform-databricks-workspace-management)
+
+---
 
 ![Databricks deployment](https://github.com/tomarv2/terraform-databricks-azure-workspace/raw/main/docs/images/databricks_deployment.png)
 ---
@@ -106,3 +109,8 @@ module "databricks_workspace" {
 ```
 
 Please refer to examples directory [link](examples) for references.
+
+
+#### References
+
+##### - Terraform module for [Databricks AWS Workspace](https://github.com/tomarv2/terraform-databricks-aws-workspace)
