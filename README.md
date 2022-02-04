@@ -17,6 +17,10 @@
 
 ## Terraform module for [Databricks Azure Workspace (Part 1)](https://registry.terraform.io/providers/databrickslabs/databricks/latest/docs/guides/azure-workspace)
 
+> ❗️ **Important**
+>
+> :point_right: This Terraform module assumes you have logged into Azure using `az login` and have Contributor access to the subscription.
+>
 > :arrow_right:️ **Part 2:** Terraform module for [Databricks Workspace management](https://github.com/tomarv2/terraform-databricks-workspace-management)
 
 ---
@@ -29,7 +33,7 @@
 - Module tested for Terraform [1.1.4](https://www.terraform.io/downloads)
 - `databrickslabs/databricks` provider version [0.4.6](https://registry.terraform.io/providers/databrickslabs/databricks/latest)
 - Azure provider version [2.94.0](https://registry.terraform.io/providers/hashicorp/azurerm/latest).
-- `main` branch: Provider versions not pinned to keep up with Terraform releases.
+- `main` branch: Provider versions may not be pinned to keep up with Terraform releases.
 - `tags` releases: Tags are pinned with versions (use <a href="https://github.com/tomarv2/terraform-databricks-azure-workspace/tags" alt="GitHub tag">
         <img src="https://img.shields.io/github/v/tag/tomarv2/terraform-databricks-azure-workspace" /></a>).
 
@@ -67,7 +71,7 @@ export TF_AZURE_CONTAINER=tfstate # Output of remote_state.sh
 export ARM_ACCESS_KEY=xxxxxxxxxx # Output of remote_state.sh
 ```
 
-- Update [main.tf](examples/azure_databricks_with_virtual_network/main.tf) file with required values.
+- Update [main.tf](examples/azure_databricks/main.tf) file with required values.
 
 - Run and verify the output before deploying:
 ```
