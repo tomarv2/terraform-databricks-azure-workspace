@@ -13,8 +13,7 @@ module "vnet" {
 module "azure_databricks" {
   source = "../../"
 
-  deploy_resource_group = false
-  resource_group_name   = "demo-resource_group"
+  resource_group_name = "demo-resource_group"
   custom_parameters = {
     virtual_network_id = module.vnet.virtual_network_id
   }

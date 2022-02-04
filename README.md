@@ -93,11 +93,6 @@ tf -c=azure destroy -var='teamid=foo' -var='prjid=bar'
 module "databricks_workspace" {
   source = "git::git@github.com:tomarv2/terraform-databricks-azure-workspace.git"
 
-  client_id       = var.client_id
-  client_secret   = var.client_secret
-  subscription_id = var.subscription_id
-  tenant_id       = var.tenant_id
-
   resource_group_name         = "demo-rg"
   # ---------------------------------------------
   # Note: Do not change teamid and prjid once set.
