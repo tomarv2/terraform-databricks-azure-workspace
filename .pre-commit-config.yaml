@@ -33,8 +33,8 @@ repos:
 #      - -d . --framework terraform -o output_format json --download-external-modules True
 
   - repo: https://github.com/bridgecrewio/checkov.git
-    rev: '2.0.769'
+    rev: '2.0.788'
     hooks:
     - id: checkov
       verbose: true
-      args: [-d, '.', --framework, 'terraform', --download-external-modules, 'True']
+      args: [-d, '.', --framework, 'terraform']
