@@ -1,5 +1,5 @@
 module "vnet" {
-  source = "git@github.com:tomarv2/terraform-azure-virtual-network.git?ref=v0.0.2"
+  source = "git::git@github.com:tomarv2/terraform-azure-virtual-network.git?ref=v0.0.2"
 
   resource_group_name = "demo-resource_group"
   location            = "westus2"
