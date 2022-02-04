@@ -9,8 +9,6 @@
         <img src="https://img.shields.io/github/commit-activity/m/tomarv2/terraform-databricks-azure-workspace" /></a>
     <a href="https://stackoverflow.com/users/6679867/tomarv2" alt="Stack Exchange reputation">
         <img src="https://img.shields.io/stackexchange/stackoverflow/r/6679867"></a>
-    <a href="https://discord.gg/XH975bzN" alt="chat on Discord">
-        <img src="https://img.shields.io/discord/813961944443912223?logo=discord"></a>
     <a href="https://twitter.com/intent/follow?screen_name=varuntomar2019" alt="follow on Twitter">
         <img src="https://img.shields.io/twitter/follow/varuntomar2019?style=social&logo=twitter"></a>
 </p>
