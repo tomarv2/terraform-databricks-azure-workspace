@@ -21,7 +21,7 @@
 >
 > :arrow_right:️ **Part 2:** Terraform module for [Databricks Workspace management](https://github.com/tomarv2/terraform-databricks-workspace-management)
 
-<p align="center" width="100%">
+<p align="center" width="200%">
     <img width="40%" src="https://github.com/tomarv2/terraform-databricks-azure-workspace/raw/main/docs/images/databricks_deployment.png">
 </p>
 
