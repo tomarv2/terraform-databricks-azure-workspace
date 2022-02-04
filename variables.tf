@@ -62,7 +62,7 @@ variable "infrastructure_encryption_enabled" {
 
 variable "public_network_access_enabled" {
   description = "Allow public access for accessing workspace. Set value to false to access workspace only via private link endpoint. Possible values include true or false. Defaults to true. Changing this forces a new resource to be created"
-  default     = false
+  default     = true
   type        = bool
 }
 
@@ -94,4 +94,10 @@ variable "network_security_group_rules_required" {
   description = "Does the data plane (clusters) to control plane communication happen over private link endpoint only or publicly? Possible values AllRules, NoAzureDatabricksRules or NoAzureServiceRules. Required when public_network_access_enabled is set to false. Changing this forces a new resource to be created"
   default     = null
   type        = string
+}
+
+variable "databricks_token_lifetime_seconds" {
+  description = "Validity of the databricks token in seconds"
+  default     = 86400
+  type        = number
 }

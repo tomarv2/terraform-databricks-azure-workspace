@@ -22,3 +22,19 @@ output "databricks_sku" {
   description = "The sku to use for the Databricks Workspace. Possible values are standard, premium, or trial. Changing this can force a new resource to be created in some circumstances"
   value       = azurerm_databricks_workspace.this.sku
 }
+
+output "databricks_token" {
+  description = "Value of the newly-created token"
+  value       = databricks_token.pat.token_value
+  sensitive   = true
+}
+
+output "nonsensitive_databricks_token" {
+  description = "Value of the newly-created token"
+  value       = nonsensitive(databricks_token.pat.token_value)
+}
+
+output "databricks_token_lifetime_hours" {
+  description = "Token validity"
+  value       = databricks_token.pat.lifetime_seconds / 3600
+}
