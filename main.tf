@@ -6,7 +6,7 @@ data "external" "current_user" {
 }
 
 module "resource_group" {
-  source = "git@github.com:tomarv2/terraform-azure-resource-group.git?ref=v0.0.3"
+  source = "git::git@github.com:tomarv2/terraform-azure-resource-group.git?ref=v0.0.3"
 
   deploy_resource_group = var.deploy_resource_group != false ? true : false
   resource_group_name   = var.resource_group_name != null ? var.resource_group_name : "${var.teamid}-${var.prjid}"

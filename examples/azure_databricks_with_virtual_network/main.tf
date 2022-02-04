@@ -1,5 +1,5 @@
 module "vnet" {
-  source = "git@github.com:tomarv2/terraform-azure-virtual-network.git?ref=v0.0.2"
+  source = "git::git@github.com:tomarv2/terraform-azure-virtual-network.git?ref=v0.0.2"
 
   resource_group_name = "demo-resource_group"
   location            = "westus2"
@@ -13,8 +13,7 @@ module "vnet" {
 module "azure_databricks" {
   source = "../../"
 
-  deploy_resource_group = false
-  resource_group_name   = "demo-resource_group"
+  resource_group_name = "demo-resource_group"
   custom_parameters = {
     virtual_network_id = module.vnet.virtual_network_id
   }

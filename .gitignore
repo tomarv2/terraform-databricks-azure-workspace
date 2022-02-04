@@ -82,3 +82,4 @@ _testmain.go
 # ignore test related file(s)
 **/test**
 **.
+#**/.external_modules
