@@ -37,4 +37,4 @@ repos:
     hooks:
     - id: checkov
       verbose: true
-      args: [-d, '.', --framework, 'terraform']
+      args: [-d, '.', --framework, 'terraform', --download-external-modules, 'True']
