@@ -110,6 +110,7 @@ Please refer to examples directory [link](examples) for references.
 
 ##### - Terraform module for [Databricks AWS Workspace](https://github.com/tomarv2/terraform-databricks-aws-workspace)
 
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -124,11 +125,11 @@ Please refer to examples directory [link](examples) for references.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 2.94.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 2.94 |
 | <a name="provider_databricks"></a> [databricks](#provider\_databricks) | 0.3.5 |
 | <a name="provider_databricks.created_workspace"></a> [databricks.created\_workspace](#provider\_databricks.created\_workspace) | 0.3.5 |
-| <a name="provider_external"></a> [external](#provider\_external) | 2.2.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.1.0 |
+| <a name="provider_external"></a> [external](#provider\_external) | ~> 2.2 |
+| <a name="provider_random"></a> [random](#provider\_random) | ~> 3.1 |
 
 ## Modules
 
@@ -180,3 +181,4 @@ Please refer to examples directory [link](examples) for references.
 | <a name="output_managed_resource_group_name"></a> [managed\_resource\_group\_name](#output\_managed\_resource\_group\_name) | databricks managed resource group name |
 | <a name="output_nonsensitive_databricks_token"></a> [nonsensitive\_databricks\_token](#output\_nonsensitive\_databricks\_token) | Value of the newly-created token |
 | <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | databricks resource group name |
+<!-- END_TF_DOCS -->
