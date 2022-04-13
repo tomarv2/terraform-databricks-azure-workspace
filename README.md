@@ -110,146 +110,28 @@ Please refer to examples directory [link](examples) for references.
 
 ##### - Terraform module for [Databricks AWS Workspace](https://github.com/tomarv2/terraform-databricks-aws-workspace)
 
-## Requirements
-
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.1 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 2.94 |
-| <a name="requirement_databricks"></a> [databricks](#requirement\_databricks) | 0.3.5 |
-| <a name="requirement_external"></a> [external](#requirement\_external) | ~> 2.2 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | ~> 3.1 |
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 2.94.0 |
-| <a name="provider_databricks"></a> [databricks](#provider\_databricks) | 0.3.5 |
-| <a name="provider_databricks.created_workspace"></a> [databricks.created\_workspace](#provider\_databricks.created\_workspace) | 0.3.5 |
-| <a name="provider_external"></a> [external](#provider\_external) | 2.2.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.1.0 |
-
-## Modules
-
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | git::git@github.com:tomarv2/terraform-azure-resource-group.git | v0.0.3 |
-
-## Resources
-
-| Name | Type |
-|------|------|
-| [azurerm_databricks_workspace.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/databricks_workspace) | resource |
-| [databricks_token.pat](https://registry.terraform.io/providers/databrickslabs/databricks/0.3.5/docs/resources/token) | resource |
-| [random_string.naming](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
-| [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config) | data source |
-| [databricks_current_user.me](https://registry.terraform.io/providers/databrickslabs/databricks/0.3.5/docs/data-sources/current_user) | data source |
-| [external_external.current_user](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/external) | data source |
-
-## Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_custom_parameters"></a> [custom\_parameters](#input\_custom\_parameters) | https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/databricks_workspace | `any` | `null` | no |
-| <a name="input_custom_tags"></a> [custom\_tags](#input\_custom\_tags) | Extra custom tags | `any` | `null` | no |
-| <a name="input_customer_managed_key_enabled"></a> [customer\_managed\_key\_enabled](#input\_customer\_managed\_key\_enabled) | Is the workspace enabled for customer managed key encryption? If true this enables the Managed Identity for the managed storage account. Possible values are true or false. Defaults to false. This field is only valid if the Databricks Workspace sku is set to premium. Changing this forces a new resource to be created | `bool` | `false` | no |
-| <a name="input_databricks_token_lifetime_seconds"></a> [databricks\_token\_lifetime\_seconds](#input\_databricks\_token\_lifetime\_seconds) | Validity of the databricks token in seconds | `number` | `86400` | no |
-| <a name="input_deploy_resource_group"></a> [deploy\_resource\_group](#input\_deploy\_resource\_group) | feature flag to deploy this resource or not | `bool` | `false` | no |
-| <a name="input_infrastructure_encryption_enabled"></a> [infrastructure\_encryption\_enabled](#input\_infrastructure\_encryption\_enabled) | Is the Databricks File System root file system enabled with a secondary layer of encryption with platform managed keys? Possible values are true or false. Defaults to false. This field is only valid if the Databricks Workspace sku is set to premium. Changing this forces a new resource to be created | `bool` | `false` | no |
-| <a name="input_load_balancer_backend_address_pool_id"></a> [load\_balancer\_backend\_address\_pool\_id](#input\_load\_balancer\_backend\_address\_pool\_id) | Resource ID of the Outbound Load balancer Backend Address Pool for Secure Cluster Connectivity (No Public IP) workspace. Changing this forces a new resource to be created | `string` | `null` | no |
-| <a name="input_managed_services_cmk_key_vault_key_id"></a> [managed\_services\_cmk\_key\_vault\_key\_id](#input\_managed\_services\_cmk\_key\_vault\_key\_id) | Customer managed encryption properties for the Databricks Workspace managed resources(e.g. Notebooks and Artifacts). Changing this forces a new resource to be created. | `string` | `null` | no |
-| <a name="input_network_security_group_rules_required"></a> [network\_security\_group\_rules\_required](#input\_network\_security\_group\_rules\_required) | Does the data plane (clusters) to control plane communication happen over private link endpoint only or publicly? Possible values AllRules, NoAzureDatabricksRules or NoAzureServiceRules. Required when public\_network\_access\_enabled is set to false. Changing this forces a new resource to be created | `string` | `null` | no |
-| <a name="input_prjid"></a> [prjid](#input\_prjid) | (Required) Name of the project/stack e.g: mystack, nifieks, demoaci. Should not be changed after running 'tf apply' | `string` | n/a | yes |
-| <a name="input_public_network_access_enabled"></a> [public\_network\_access\_enabled](#input\_public\_network\_access\_enabled) | Allow public access for accessing workspace. Set value to false to access workspace only via private link endpoint. Possible values include true or false. Defaults to true. Changing this forces a new resource to be created | `bool` | `true` | no |
-| <a name="input_region"></a> [region](#input\_region) | The region where the resources are created | `string` | `"westus2"` | no |
-| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Resource Group name | `string` | `null` | no |
-| <a name="input_sku"></a> [sku](#input\_sku) | The sku to use for the Databricks Workspace. Possible values are standard, premium, or trial. Changing this can force a new resource to be created in some circumstances | `string` | `"standard"` | no |
-| <a name="input_teamid"></a> [teamid](#input\_teamid) | (Required) Name of the team/group e.g. devops, dataengineering. Should not be changed after running 'tf apply' | `string` | n/a | yes |
-| <a name="input_workspace_name"></a> [workspace\_name](#input\_workspace\_name) | Specifies the name of the Databricks Workspace resource. Changing this forces a new resource to be created | `string` | `null` | no |
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| <a name="output_databricks_host"></a> [databricks\_host](#output\_databricks\_host) | databricks workspace url |
-| <a name="output_databricks_sku"></a> [databricks\_sku](#output\_databricks\_sku) | The sku to use for the Databricks Workspace. Possible values are standard, premium, or trial. Changing this can force a new resource to be created in some circumstances |
-| <a name="output_databricks_token"></a> [databricks\_token](#output\_databricks\_token) | Value of the newly-created token |
-| <a name="output_databricks_token_lifetime_hours"></a> [databricks\_token\_lifetime\_hours](#output\_databricks\_token\_lifetime\_hours) | Token validity |
-| <a name="output_databricks_workspace_id"></a> [databricks\_workspace\_id](#output\_databricks\_workspace\_id) | databricks workspace id |
-| <a name="output_managed_resource_group_name"></a> [managed\_resource\_group\_name](#output\_managed\_resource\_group\_name) | databricks managed resource group name |
-| <a name="output_nonsensitive_databricks_token"></a> [nonsensitive\_databricks\_token](#output\_nonsensitive\_databricks\_token) | Value of the newly-created token |
-| <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | databricks resource group name |
-
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.1 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 2.94 |
-| <a name="requirement_databricks"></a> [databricks](#requirement\_databricks) | 0.3.5 |
-| <a name="requirement_external"></a> [external](#requirement\_external) | ~> 2.2 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | ~> 3.1 |
+No requirements.
 
 ## Providers
 
-| Name | Version |
-|------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 2.94 |
-| <a name="provider_databricks"></a> [databricks](#provider\_databricks) | 0.3.5 |
-| <a name="provider_databricks.created_workspace"></a> [databricks.created\_workspace](#provider\_databricks.created\_workspace) | 0.3.5 |
-| <a name="provider_external"></a> [external](#provider\_external) | ~> 2.2 |
-| <a name="provider_random"></a> [random](#provider\_random) | ~> 3.1 |
+No providers.
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | git::git@github.com:tomarv2/terraform-azure-resource-group.git | v0.0.3 |
+No modules.
 
 ## Resources
 
-| Name | Type |
-|------|------|
-| [azurerm_databricks_workspace.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/databricks_workspace) | resource |
-| [databricks_token.pat](https://registry.terraform.io/providers/databrickslabs/databricks/0.3.5/docs/resources/token) | resource |
-| [random_string.naming](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
-| [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config) | data source |
-| [databricks_current_user.me](https://registry.terraform.io/providers/databrickslabs/databricks/0.3.5/docs/data-sources/current_user) | data source |
-| [external_external.current_user](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/external) | data source |
+No resources.
 
 ## Inputs
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_custom_parameters"></a> [custom\_parameters](#input\_custom\_parameters) | https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/databricks_workspace | `any` | `null` | no |
-| <a name="input_custom_tags"></a> [custom\_tags](#input\_custom\_tags) | Extra custom tags | `any` | `null` | no |
-| <a name="input_customer_managed_key_enabled"></a> [customer\_managed\_key\_enabled](#input\_customer\_managed\_key\_enabled) | Is the workspace enabled for customer managed key encryption? If true this enables the Managed Identity for the managed storage account. Possible values are true or false. Defaults to false. This field is only valid if the Databricks Workspace sku is set to premium. Changing this forces a new resource to be created | `bool` | `false` | no |
-| <a name="input_databricks_token_lifetime_seconds"></a> [databricks\_token\_lifetime\_seconds](#input\_databricks\_token\_lifetime\_seconds) | Validity of the databricks token in seconds | `number` | `86400` | no |
-| <a name="input_deploy_resource_group"></a> [deploy\_resource\_group](#input\_deploy\_resource\_group) | feature flag to deploy this resource or not | `bool` | `false` | no |
-| <a name="input_infrastructure_encryption_enabled"></a> [infrastructure\_encryption\_enabled](#input\_infrastructure\_encryption\_enabled) | Is the Databricks File System root file system enabled with a secondary layer of encryption with platform managed keys? Possible values are true or false. Defaults to false. This field is only valid if the Databricks Workspace sku is set to premium. Changing this forces a new resource to be created | `bool` | `false` | no |
-| <a name="input_load_balancer_backend_address_pool_id"></a> [load\_balancer\_backend\_address\_pool\_id](#input\_load\_balancer\_backend\_address\_pool\_id) | Resource ID of the Outbound Load balancer Backend Address Pool for Secure Cluster Connectivity (No Public IP) workspace. Changing this forces a new resource to be created | `string` | `null` | no |
-| <a name="input_managed_services_cmk_key_vault_key_id"></a> [managed\_services\_cmk\_key\_vault\_key\_id](#input\_managed\_services\_cmk\_key\_vault\_key\_id) | Customer managed encryption properties for the Databricks Workspace managed resources(e.g. Notebooks and Artifacts). Changing this forces a new resource to be created. | `string` | `null` | no |
-| <a name="input_network_security_group_rules_required"></a> [network\_security\_group\_rules\_required](#input\_network\_security\_group\_rules\_required) | Does the data plane (clusters) to control plane communication happen over private link endpoint only or publicly? Possible values AllRules, NoAzureDatabricksRules or NoAzureServiceRules. Required when public\_network\_access\_enabled is set to false. Changing this forces a new resource to be created | `string` | `null` | no |
-| <a name="input_prjid"></a> [prjid](#input\_prjid) | (Required) Name of the project/stack e.g: mystack, nifieks, demoaci. Should not be changed after running 'tf apply' | `string` | n/a | yes |
-| <a name="input_public_network_access_enabled"></a> [public\_network\_access\_enabled](#input\_public\_network\_access\_enabled) | Allow public access for accessing workspace. Set value to false to access workspace only via private link endpoint. Possible values include true or false. Defaults to true. Changing this forces a new resource to be created | `bool` | `true` | no |
-| <a name="input_region"></a> [region](#input\_region) | The region where the resources are created | `string` | `"westus2"` | no |
-| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Resource Group name | `string` | `null` | no |
-| <a name="input_sku"></a> [sku](#input\_sku) | The sku to use for the Databricks Workspace. Possible values are standard, premium, or trial. Changing this can force a new resource to be created in some circumstances | `string` | `"standard"` | no |
-| <a name="input_teamid"></a> [teamid](#input\_teamid) | (Required) Name of the team/group e.g. devops, dataengineering. Should not be changed after running 'tf apply' | `string` | n/a | yes |
-| <a name="input_workspace_name"></a> [workspace\_name](#input\_workspace\_name) | Specifies the name of the Databricks Workspace resource. Changing this forces a new resource to be created | `string` | `null` | no |
+No inputs.
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_databricks_host"></a> [databricks\_host](#output\_databricks\_host) | databricks workspace url |
-| <a name="output_databricks_sku"></a> [databricks\_sku](#output\_databricks\_sku) | The sku to use for the Databricks Workspace. Possible values are standard, premium, or trial. Changing this can force a new resource to be created in some circumstances |
-| <a name="output_databricks_token"></a> [databricks\_token](#output\_databricks\_token) | Value of the newly-created token |
-| <a name="output_databricks_token_lifetime_hours"></a> [databricks\_token\_lifetime\_hours](#output\_databricks\_token\_lifetime\_hours) | Token validity |
-| <a name="output_databricks_workspace_id"></a> [databricks\_workspace\_id](#output\_databricks\_workspace\_id) | databricks workspace id |
-| <a name="output_managed_resource_group_name"></a> [managed\_resource\_group\_name](#output\_managed\_resource\_group\_name) | databricks managed resource group name |
-| <a name="output_nonsensitive_databricks_token"></a> [nonsensitive\_databricks\_token](#output\_nonsensitive\_databricks\_token) | Value of the newly-created token |
-| <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | databricks resource group name |
+No outputs.
 <!-- END_TF_DOCS -->
