@@ -30,7 +30,7 @@ output "sensitive_databricks_token" {
 }
 
 output "databricks_token" {
-  description = "Value of the newly-created token (nonsensitive)"
+  description = "Value of the newly created token (nonsensitive)"
   value       = module.azure_databricks.nonsensitive_databricks_token
 }
 
