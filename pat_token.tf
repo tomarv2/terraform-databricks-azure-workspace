@@ -3,6 +3,8 @@ resource "databricks_token" "pat" {
 
   comment          = "Terraform managed: ${var.teamid}-${var.prjid}"
   lifetime_seconds = var.databricks_token_lifetime_seconds
+
+  depends_on = [azurerm_databricks_workspace.this]
 }
 
 provider "databricks" {
