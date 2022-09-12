@@ -12,11 +12,10 @@ data "databricks_current_user" "me" {
 */
 
 module "resource_group" {
-  source = "git::git@github.com:tomarv2/terraform-azure-resource-group.git?ref=v0.0.10"
+  source = "git::git@github.com:tomarv2/terraform-azure-resource-group.git?ref=v0.0.12"
 
-  resource_group_settings = var.resource_group_settings
+  resource_group_settings = var.resource_group_settings != null ? var.resource_group_settings : []
+
   teamid = var.teamid
   prjid  = var.prjid
 }
-
-variable "resource_group_settings" {}
