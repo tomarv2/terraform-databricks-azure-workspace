@@ -1,6 +1,6 @@
 resource "azurerm_databricks_workspace" "this" {
   name                                  = var.workspace_name != null ? var.workspace_name : "${var.teamid}-${var.prjid}"
-  resource_group_name                   = module.resource_group.resource_group_name[0]
+  resource_group_name                   = var.resource_group_name != null ? var.resource_group_name : module.resource_group.resource_group_name[0]
   location                              = var.region
   sku                                   = var.sku
   managed_resource_group_name           = "${local.prefix}-workspace-rg"

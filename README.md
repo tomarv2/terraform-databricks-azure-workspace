@@ -96,7 +96,11 @@ tf -c=azure destroy -var='teamid=foo' -var='prjid=bar'
 module "databricks_workspace" {
   source = "git::git@github.com:tomarv2/terraform-databricks-azure-workspace.git"
 
-  resource_group_name         = "demo-rg"
+  resource_group_settings = [
+    {
+      name     = "demo1"
+      location = "westus2"
+  }]
   # ---------------------------------------------
   # Note: Do not change teamid and prjid once set.
   teamid = var.teamid
@@ -134,7 +138,7 @@ Please refer to examples directory [link](examples) for references.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | git::git@github.com:tomarv2/terraform-azure-resource-group.git | v0.0.10 |
+| <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | git::git@github.com:tomarv2/terraform-azure-resource-group.git | v0.0.12 |
 
 ## Resources
 
@@ -159,13 +163,13 @@ Please refer to examples directory [link](examples) for references.
 | <a name="input_load_balancer_backend_address_pool_id"></a> [load\_balancer\_backend\_address\_pool\_id](#input\_load\_balancer\_backend\_address\_pool\_id) | Resource ID of the Outbound Load balancer Backend Address Pool for Secure Cluster Connectivity (No Public IP) workspace. Changing this forces a new resource to be created | `string` | `null` | no |
 | <a name="input_managed_services_cmk_key_vault_key_id"></a> [managed\_services\_cmk\_key\_vault\_key\_id](#input\_managed\_services\_cmk\_key\_vault\_key\_id) | Customer managed encryption properties for the Databricks Workspace managed resources(e.g. Notebooks and Artifacts). Changing this forces a new resource to be created. | `string` | `null` | no |
 | <a name="input_network_security_group_rules_required"></a> [network\_security\_group\_rules\_required](#input\_network\_security\_group\_rules\_required) | Does the data plane (clusters) to control plane communication happen over private link endpoint only or publicly? Possible values AllRules, NoAzureDatabricksRules or NoAzureServiceRules. Required when public\_network\_access\_enabled is set to false. Changing this forces a new resource to be created | `string` | `null` | no |
-| <a name="input_prjid"></a> [prjid](#input\_prjid) | (Required) Name of the project/stack e.g: mystack, nifieks, demoaci. Should not be changed after running 'tf apply' | `string` | n/a | yes |
+| <a name="input_prjid"></a> [prjid](#input\_prjid) | Name of the project/stack e.g: mystack, nifieks, demoaci. Should not be changed after running 'tf apply' | `string` | n/a | yes |
 | <a name="input_public_network_access_enabled"></a> [public\_network\_access\_enabled](#input\_public\_network\_access\_enabled) | Allow public access for accessing workspace. Set value to false to access workspace only via private link endpoint. Possible values include true or false. Defaults to true. Changing this forces a new resource to be created | `bool` | `true` | no |
 | <a name="input_region"></a> [region](#input\_region) | The region where the resources are created | `string` | `"westus2"` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Resource Group name | `string` | `null` | no |
-| <a name="input_resource_group_settings"></a> [resource\_group\_settings](#input\_resource\_group\_settings) | n/a | `any` | n/a | yes |
+| <a name="input_resource_group_settings"></a> [resource\_group\_settings](#input\_resource\_group\_settings) | Resource Group name | `map(any)` | `null` | no |
 | <a name="input_sku"></a> [sku](#input\_sku) | The sku to use for the Databricks Workspace. Possible values are standard, premium, or trial. Changing this can force a new resource to be created in some circumstances | `string` | `"standard"` | no |
-| <a name="input_teamid"></a> [teamid](#input\_teamid) | (Required) Name of the team/group e.g. devops, dataengineering. Should not be changed after running 'tf apply' | `string` | n/a | yes |
+| <a name="input_teamid"></a> [teamid](#input\_teamid) | Name of the team/group e.g. devops, dataengineering. Should not be changed after running 'tf apply' | `string` | n/a | yes |
 | <a name="input_workspace_name"></a> [workspace\_name](#input\_workspace\_name) | Specifies the name of the Databricks Workspace resource. Changing this forces a new resource to be created | `string` | `null` | no |
 
 ## Outputs
