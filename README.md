@@ -116,8 +116,8 @@ Please refer to examples directory [link](examples) for references.
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.1 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 3.21.1 |
-| <a name="requirement_databricks"></a> [databricks](#requirement\_databricks) | 1.2.1 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 2.94 |
+| <a name="requirement_databricks"></a> [databricks](#requirement\_databricks) | 0.3.5 |
 | <a name="requirement_external"></a> [external](#requirement\_external) | ~> 2.2 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | ~> 3.1 |
 
@@ -125,8 +125,9 @@ Please refer to examples directory [link](examples) for references.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 3.21.1 |
-| <a name="provider_databricks.created_workspace"></a> [databricks.created\_workspace](#provider\_databricks.created\_workspace) | 1.2.1 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 2.94 |
+| <a name="provider_databricks"></a> [databricks](#provider\_databricks) | 0.3.5 |
+| <a name="provider_databricks.created_workspace"></a> [databricks.created\_workspace](#provider\_databricks.created\_workspace) | 0.3.5 |
 | <a name="provider_external"></a> [external](#provider\_external) | ~> 2.2 |
 | <a name="provider_random"></a> [random](#provider\_random) | ~> 3.1 |
 
@@ -134,16 +135,17 @@ Please refer to examples directory [link](examples) for references.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | git::git@github.com:tomarv2/terraform-azure-resource-group.git | v0.0.10 |
+| <a name="module_resource_group"></a> [resource\_group](#module\_resource\_group) | git::git@github.com:tomarv2/terraform-azure-resource-group.git | v0.0.3 |
 
 ## Resources
 
 | Name | Type |
 |------|------|
 | [azurerm_databricks_workspace.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/databricks_workspace) | resource |
-| [databricks_token.pat](https://registry.terraform.io/providers/databricks/databricks/1.2.1/docs/resources/token) | resource |
+| [databricks_token.pat](https://registry.terraform.io/providers/databrickslabs/databricks/0.3.5/docs/resources/token) | resource |
 | [random_string.naming](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 | [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/client_config) | data source |
+| [databricks_current_user.me](https://registry.terraform.io/providers/databrickslabs/databricks/0.3.5/docs/data-sources/current_user) | data source |
 | [external_external.current_user](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/external) | data source |
 
 ## Inputs
@@ -163,7 +165,6 @@ Please refer to examples directory [link](examples) for references.
 | <a name="input_public_network_access_enabled"></a> [public\_network\_access\_enabled](#input\_public\_network\_access\_enabled) | Allow public access for accessing workspace. Set value to false to access workspace only via private link endpoint. Possible values include true or false. Defaults to true. Changing this forces a new resource to be created | `bool` | `true` | no |
 | <a name="input_region"></a> [region](#input\_region) | The region where the resources are created | `string` | `"westus2"` | no |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Resource Group name | `string` | `null` | no |
-| <a name="input_resource_group_settings"></a> [resource\_group\_settings](#input\_resource\_group\_settings) | n/a | `any` | n/a | yes |
 | <a name="input_sku"></a> [sku](#input\_sku) | The sku to use for the Databricks Workspace. Possible values are standard, premium, or trial. Changing this can force a new resource to be created in some circumstances | `string` | `"standard"` | no |
 | <a name="input_teamid"></a> [teamid](#input\_teamid) | (Required) Name of the team/group e.g. devops, dataengineering. Should not be changed after running 'tf apply' | `string` | n/a | yes |
 | <a name="input_workspace_name"></a> [workspace\_name](#input\_workspace\_name) | Specifies the name of the Databricks Workspace resource. Changing this forces a new resource to be created | `string` | `null` | no |
