@@ -5,18 +5,18 @@ data "external" "current_user" {
   program = ["az", "account", "show", "--query", "user"]
 }
 
+/*
 data "databricks_current_user" "me" {
   depends_on = [azurerm_databricks_workspace.this]
 }
+*/
 
 module "resource_group" {
-  source = "git::git@github.com:tomarv2/terraform-azure-resource-group.git?ref=v0.0.3"
+  source = "git::git@github.com:tomarv2/terraform-azure-resource-group.git?ref=v0.0.10"
 
-  deploy_resource_group = var.deploy_resource_group != false ? true : false
-  resource_group_name   = var.resource_group_name != null ? var.resource_group_name : "${var.teamid}-${var.prjid}"
-
-  # ------------------------------------------------
-  # Do not change the teamid, prjid once set.
+  resource_group_settings = var.resource_group_settings
   teamid = var.teamid
   prjid  = var.prjid
 }
+
+variable "resource_group_settings" {}
